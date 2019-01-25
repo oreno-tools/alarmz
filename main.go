@@ -5,6 +5,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatch"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -19,25 +20,21 @@ func main() {
 	oks := []string{}
 	alarms := []string{}
 	insufficients := []string{}
-	alarts := []string{}
 
 	for {
 		res, _ := svc.DescribeAlarms(params)
 		for _, alarm := range res.MetricAlarms {
-			// fmt.Println(alarm)
 			if *alarm.StateValue == "OK" {
-				oks = append(oks, "1")
+				o := *alarm.AlarmName + " | color=green"
+				oks = append(oks, o)
 			} else if *alarm.StateValue == "ALARM" {
-				alarms = append(alarms, "1")
+				a := *alarm.AlarmName + " | color=red"
+				alarms = append(alarms, a)
 			} else if *alarm.StateValue == "INSUFFICIENT_DATA" {
-				insufficients = append(insufficients, "1")
+				i := *alarm.AlarmName + " | color=purple"
+				insufficients = append(insufficients, i)
 			}
 
-			var alart string
-			if *alarm.StateValue != "OK" {
-				alart = *alarm.AlarmName + "\t" + *alarm.StateValue + "\n"
-				alarts = append(alarts, alart)
-			}
 		}
 		if res.NextToken == nil {
 			break
@@ -46,8 +43,11 @@ func main() {
 		continue
 	}
 
-	fmt.Printf("OK: " + strconv.Itoa(len(oks)) + "\n")
-	fmt.Printf("ALARM: " + strconv.Itoa(len(alarms)) + "\n")
-	fmt.Printf("INSUFFICIENT_DATA: " + strconv.Itoa(len(insufficients)) + "\n")
-	// fmt.Println(alarts)
+	fmt.Printf("OK: " + strconv.Itoa(len(oks)) + " | color=green\n")
+	fmt.Printf("ALARM: " + strconv.Itoa(len(alarms)) + " | color=red\n")
+	fmt.Printf("INSUFFICIENT_DATA: " + strconv.Itoa(len(insufficients)) + " | color=purple\n")
+	fmt.Println("---")
+	fmt.Println(strings.Join(alarms, "\n"))
+	fmt.Println("---")
+	fmt.Println(strings.Join(insufficients, "\n"))
 }
