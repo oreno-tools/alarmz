@@ -19,7 +19,7 @@ export AWS_PROFILE=your-profile
 export AWS_DEFAULT_REGION=ap-northeast-1
 ```
 
-また, API コールの間隔を調整したい場合には alarmz.1m.sh の `1m` を変更して下さい.
+また, API コールの間隔を調整したい場合には alarmz.1m.sh の `1m` を任意の値に変更して下さい. 例えば, 5 分間隔であれば `5m` と指定して下さい. 詳細については, BitBar の [README](https://github.com/matryer/bitbar#get-started) をご一読下さい.
 
 ## One more thing...
 
