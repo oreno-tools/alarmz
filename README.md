@@ -2,7 +2,13 @@
 
 ## これなに
 
-* BitBar の CloudWatch Alarm プラグインです
+BitBar の CloudWatch Alarm プラグインです. 以下のようにメニューバー上で CloudWatch Alarm の状態を確認することが出来ます.
+
+![](docs/images/019012703.gif)
+
+以下のようにシンプル出力モードも用意しています.
+
+![](docs/images/019012705.gif)
 
 ## 使い方
 
