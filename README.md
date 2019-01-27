@@ -4,11 +4,11 @@
 
 BitBar の CloudWatch Alarm プラグインです. 以下のようにメニューバー上で CloudWatch Alarm の状態を確認することが出来ます.
 
-![](docs/images/019012703.gif)
+![](https://github.com/oreno-tools/alarmz/blob/master/docs/images/2019012703.gif?raw=true)
 
 以下のようにシンプル出力モードも用意しています.
 
-![](docs/images/019012705.gif)
+![](https://github.com/oreno-tools/alarmz/blob/master/docs/images/2019012705.gif?raw=true)
 
 ## 使い方
 
